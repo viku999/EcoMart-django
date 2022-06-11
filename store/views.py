@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product
 from category.models import Category
 from carts.models import CartItem
-
 from carts.views import _cart_id
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
@@ -51,6 +50,7 @@ def product_detail(request, category_slug, product_slug):
 
 
 def search(request):
+    global products, product_count
     if 'keyword' in request.GET:
         keyword = request.GET['keyword']
         if keyword:
